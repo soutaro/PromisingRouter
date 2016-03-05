@@ -9,7 +9,14 @@
 /* Begin PBXBuildFile section */
 		AB9BE38F1C8B14C000CA550F /* PromisingRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB9BE3961C8B14C000CA550F /* PromisingRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9BE38B1C8B14C000CA550F /* PromisingRouter.framework */; };
-		AB9BE39B1C8B14C000CA550F /* PromisingRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */; };
+		AB9BE3A61C8B14F300CA550F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3A51C8B14F300CA550F /* Router.swift */; };
+		AB9BE3A81C8B156800CA550F /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3A71C8B156800CA550F /* Protocols.swift */; };
+		AB9BE3AA1C8B15B500CA550F /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3A91C8B15B500CA550F /* Routing.swift */; };
+		AB9BE3AC1C8B162800CA550F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3AB1C8B162800CA550F /* Request.swift */; };
+		AB9BE3AE1C8B190500CA550F /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3AD1C8B190500CA550F /* URLHelper.swift */; };
+		AB9BE3B01C8B221B00CA550F /* BindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3AF1C8B221B00CA550F /* BindingTests.swift */; };
+		AB9BE3B21C8B245700CA550F /* RoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3B11C8B245700CA550F /* RoutingTests.swift */; };
+		AB9BE3B41C8B62AF00CA550F /* BlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE3B31C8B62AF00CA550F /* BlockAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +34,15 @@
 		AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromisingRouter.h; sourceTree = "<group>"; };
 		AB9BE3901C8B14C000CA550F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB9BE3951C8B14C000CA550F /* PromisingRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PromisingRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisingRouterTests.swift; sourceTree = "<group>"; };
 		AB9BE39C1C8B14C000CA550F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB9BE3A51C8B14F300CA550F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AB9BE3A71C8B156800CA550F /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		AB9BE3A91C8B15B500CA550F /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		AB9BE3AB1C8B162800CA550F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		AB9BE3AD1C8B190500CA550F /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		AB9BE3AF1C8B221B00CA550F /* BindingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingTests.swift; sourceTree = "<group>"; };
+		AB9BE3B11C8B245700CA550F /* RoutingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingTests.swift; sourceTree = "<group>"; };
+		AB9BE3B31C8B62AF00CA550F /* BlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +87,12 @@
 			children = (
 				AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */,
 				AB9BE3901C8B14C000CA550F /* Info.plist */,
+				AB9BE3B31C8B62AF00CA550F /* BlockAction.swift */,
+				AB9BE3A71C8B156800CA550F /* Protocols.swift */,
+				AB9BE3AB1C8B162800CA550F /* Request.swift */,
+				AB9BE3A51C8B14F300CA550F /* Router.swift */,
+				AB9BE3A91C8B15B500CA550F /* Routing.swift */,
+				AB9BE3AD1C8B190500CA550F /* URLHelper.swift */,
 			);
 			path = PromisingRouter;
 			sourceTree = "<group>";
@@ -80,8 +100,9 @@
 		AB9BE3991C8B14C000CA550F /* PromisingRouterTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */,
 				AB9BE39C1C8B14C000CA550F /* Info.plist */,
+				AB9BE3AF1C8B221B00CA550F /* BindingTests.swift */,
+				AB9BE3B11C8B245700CA550F /* RoutingTests.swift */,
 			);
 			path = PromisingRouterTests;
 			sourceTree = "<group>";
@@ -194,6 +215,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9BE3AE1C8B190500CA550F /* URLHelper.swift in Sources */,
+				AB9BE3A61C8B14F300CA550F /* Router.swift in Sources */,
+				AB9BE3AC1C8B162800CA550F /* Request.swift in Sources */,
+				AB9BE3B41C8B62AF00CA550F /* BlockAction.swift in Sources */,
+				AB9BE3A81C8B156800CA550F /* Protocols.swift in Sources */,
+				AB9BE3AA1C8B15B500CA550F /* Routing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9BE39B1C8B14C000CA550F /* PromisingRouterTests.swift in Sources */,
+				AB9BE3B21C8B245700CA550F /* RoutingTests.swift in Sources */,
+				AB9BE3B01C8B221B00CA550F /* BindingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +336,7 @@
 		AB9BE3A01C8B14C000CA550F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +347,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.PromisingRouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		AB9BE3A11C8B14C000CA550F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -376,6 +407,7 @@
 				AB9BE3A11C8B14C000CA550F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB9BE3A21C8B14C000CA550F /* Build configuration list for PBXNativeTarget "PromisingRouterTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +416,7 @@
 				AB9BE3A41C8B14C000CA550F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
