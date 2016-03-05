@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB9BE38F1C8B14C000CA550F /* PromisingRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB9BE3961C8B14C000CA550F /* PromisingRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9BE38B1C8B14C000CA550F /* PromisingRouter.framework */; };
+		AB9BE39B1C8B14C000CA550F /* PromisingRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB9BE3971C8B14C000CA550F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB9BE3821C8B14C000CA550F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB9BE38A1C8B14C000CA550F;
+			remoteInfo = PromisingRouter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB9BE38B1C8B14C000CA550F /* PromisingRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromisingRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromisingRouter.h; sourceTree = "<group>"; };
+		AB9BE3901C8B14C000CA550F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB9BE3951C8B14C000CA550F /* PromisingRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PromisingRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisingRouterTests.swift; sourceTree = "<group>"; };
+		AB9BE39C1C8B14C000CA550F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB9BE3871C8B14C000CA550F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB9BE3921C8B14C000CA550F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9BE3961C8B14C000CA550F /* PromisingRouter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB9BE3811C8B14C000CA550F = {
+			isa = PBXGroup;
+			children = (
+				AB9BE38D1C8B14C000CA550F /* PromisingRouter */,
+				AB9BE3991C8B14C000CA550F /* PromisingRouterTests */,
+				AB9BE38C1C8B14C000CA550F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB9BE38C1C8B14C000CA550F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BE38B1C8B14C000CA550F /* PromisingRouter.framework */,
+				AB9BE3951C8B14C000CA550F /* PromisingRouterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB9BE38D1C8B14C000CA550F /* PromisingRouter */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BE38E1C8B14C000CA550F /* PromisingRouter.h */,
+				AB9BE3901C8B14C000CA550F /* Info.plist */,
+			);
+			path = PromisingRouter;
+			sourceTree = "<group>";
+		};
+		AB9BE3991C8B14C000CA550F /* PromisingRouterTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BE39A1C8B14C000CA550F /* PromisingRouterTests.swift */,
+				AB9BE39C1C8B14C000CA550F /* Info.plist */,
+			);
+			path = PromisingRouterTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AB9BE3881C8B14C000CA550F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9BE38F1C8B14C000CA550F /* PromisingRouter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AB9BE38A1C8B14C000CA550F /* PromisingRouter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB9BE39F1C8B14C000CA550F /* Build configuration list for PBXNativeTarget "PromisingRouter" */;
+			buildPhases = (
+				AB9BE3861C8B14C000CA550F /* Sources */,
+				AB9BE3871C8B14C000CA550F /* Frameworks */,
+				AB9BE3881C8B14C000CA550F /* Headers */,
+				AB9BE3891C8B14C000CA550F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PromisingRouter;
+			productName = PromisingRouter;
+			productReference = AB9BE38B1C8B14C000CA550F /* PromisingRouter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AB9BE3941C8B14C000CA550F /* PromisingRouterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB9BE3A21C8B14C000CA550F /* Build configuration list for PBXNativeTarget "PromisingRouterTests" */;
+			buildPhases = (
+				AB9BE3911C8B14C000CA550F /* Sources */,
+				AB9BE3921C8B14C000CA550F /* Frameworks */,
+				AB9BE3931C8B14C000CA550F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB9BE3981C8B14C000CA550F /* PBXTargetDependency */,
+			);
+			name = PromisingRouterTests;
+			productName = PromisingRouterTests;
+			productReference = AB9BE3951C8B14C000CA550F /* PromisingRouterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB9BE3821C8B14C000CA550F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Soutaro Matsumoto";
+				TargetAttributes = {
+					AB9BE38A1C8B14C000CA550F = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					AB9BE3941C8B14C000CA550F = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = AB9BE3851C8B14C000CA550F /* Build configuration list for PBXProject "PromisingRouter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AB9BE3811C8B14C000CA550F;
+			productRefGroup = AB9BE38C1C8B14C000CA550F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB9BE38A1C8B14C000CA550F /* PromisingRouter */,
+				AB9BE3941C8B14C000CA550F /* PromisingRouterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB9BE3891C8B14C000CA550F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB9BE3931C8B14C000CA550F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB9BE3861C8B14C000CA550F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB9BE3911C8B14C000CA550F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9BE39B1C8B14C000CA550F /* PromisingRouterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB9BE3981C8B14C000CA550F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB9BE38A1C8B14C000CA550F /* PromisingRouter */;
+			targetProxy = AB9BE3971C8B14C000CA550F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AB9BE39D1C8B14C000CA550F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AB9BE39E1C8B14C000CA550F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB9BE3A01C8B14C000CA550F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PromisingRouter/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.PromisingRouter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AB9BE3A11C8B14C000CA550F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PromisingRouter/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.PromisingRouter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		AB9BE3A31C8B14C000CA550F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PromisingRouterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.PromisingRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AB9BE3A41C8B14C000CA550F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PromisingRouterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.PromisingRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB9BE3851C8B14C000CA550F /* Build configuration list for PBXProject "PromisingRouter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB9BE39D1C8B14C000CA550F /* Debug */,
+				AB9BE39E1C8B14C000CA550F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB9BE39F1C8B14C000CA550F /* Build configuration list for PBXNativeTarget "PromisingRouter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB9BE3A01C8B14C000CA550F /* Debug */,
+				AB9BE3A11C8B14C000CA550F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AB9BE3A21C8B14C000CA550F /* Build configuration list for PBXNativeTarget "PromisingRouterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB9BE3A31C8B14C000CA550F /* Debug */,
+				AB9BE3A41C8B14C000CA550F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB9BE3821C8B14C000CA550F /* Project object */;
+}
