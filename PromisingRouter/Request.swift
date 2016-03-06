@@ -16,7 +16,7 @@ import Foundation
      */
     public let queryParameters: [String: String]
     
-    init(url: NSURL, pathParameters: [String: String], queryParameters: [String: String]) {
+    public init(url: NSURL, pathParameters: [String: String], queryParameters: [String: String]) {
         self.url = url
         self.pathParameters = pathParameters
         self.queryParameters = queryParameters
