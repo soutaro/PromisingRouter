@@ -15,7 +15,7 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
 @objc public class PRRRouter: NSObject {
     private var routings: [PRRRouting]
     private var queue: dispatch_queue_t
-    private var pendingURLs: [URLRef]
+    private var pendingRequests: [(PRRRouting, URLRef, pathParameters: [String: String])]
     
     /**
      Delegate
@@ -32,7 +32,7 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
         self.queue = queue
         
         self.routings = []
-        self.pendingURLs = []
+        self.pendingRequests = []
     }
     
     /**
@@ -40,23 +40,27 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
      
      @param url URL to be routed
      @param timeout Timeout in seconds, 0 for no timeout
+     @return true if corresponding routing found, false if no routing found
      */
-    public func dispatch(url: NSURL, timeout: NSTimeInterval) {
+    public func dispatch(url: NSURL, timeout: NSTimeInterval) -> Bool {
         let ref = URLRef(url: url)
-        self.pendingURLs.append(ref)
-        self.tryDispatchURLs()
-        
-        if timeout > 0 {
-            weak var wself = self
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(timeout * Double(NSEC_PER_SEC))), self.queue) {
-                if let this = wself {
-                    if let index = this.pendingURLs.indexOf(ref) {
-                        this.pendingURLs.removeAtIndex(index)
-                        let params = queryParametersWithURL(url)
-                        this.delegate?.routerDidTimeout?(this, url: ref.url, parameters: params)
-                    }
+        if let (routing, params) = self.resolveRouting(url) {
+            self.pendingRequests.append((routing, ref, params))
+            self.tryDispatchURLs()
+
+            if timeout > 0 {
+                weak var wself = self
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(timeout * Double(NSEC_PER_SEC))), self.queue) {
+                    wself?.timeoutForURLRef(ref)
                 }
             }
+            
+            return true
+        } else {
+            let params = queryParametersWithURL(url)
+            self.delegate?.routerDidFailToRoute?(self, url: url, parameters: params)
+            
+            return false
         }
     }
     
@@ -64,7 +68,7 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
      Cancel all pending dispatch.
      */
     public func cancel() {
-        self.pendingURLs = []
+        self.pendingRequests = []
         self.delegate?.routerDidCancel?(self)
     }
 
@@ -78,39 +82,49 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
         return routing
     }
     
+    func resolveRouting(url: NSURL) -> (PRRRouting, [String: String])? {
+        let applicableRoutings: [(PRRRouting, [String: String])] = self.routings.flatMap { routing in
+            if let binding = bindParametersFromPath(routing.route, url: url) {
+                return (routing, binding)
+            } else {
+                return nil
+            }
+        }
+        
+        return applicableRoutings.first
+    }
+    
+    private func timeoutForURLRef(ref: URLRef) {
+        if let index = self.pendingRequests.indexOf({ $0.1 == ref }) {
+            let tuple = self.pendingRequests[index]
+            self.pendingRequests.removeAtIndex(index)
+            
+            let ref = tuple.1
+            let params = queryParametersWithURL(ref.url)
+            self.delegate?.routerDidTimeout?(self, url: ref.url, parameters: params)
+        }
+    }
+    
     func tryDispatchURLs() {
         dispatch_async(self.queue) {
-            let pendingURLs = self.pendingURLs
-            self.pendingURLs.removeAll()
+            let pendingRequests = self.pendingRequests
+            self.pendingRequests.removeAll()
             
-            for ref in pendingURLs {
+            for (routing, ref, pathParams) in pendingRequests {
                 let url = ref.url
                 
-                let applicableRoutings: [(PRRRouting, [String: String])] = self.routings.flatMap { routing in
-                    if let binding = bindParametersFromPath(routing.route, url: url) {
-                        return (routing, binding)
-                    } else {
-                        return nil
-                    }
-                }
-                if let (routing, binding) = applicableRoutings.first {
-                    // Route found
-                    if let action = routing.action {
-                        let queryParameters = queryParametersWithURL(url)
-                        
-                        let request = PRRRequest(url: url, pathParameters: binding, queryParameters: queryParameters)
-                        
-                        self.delegate?.routerWillRoute?(self, routing: routing, request: request)
-                        let result = action.runActionForRoute(routing, request: request)
-                        self.delegate?.routerDidRoute?(self, routing: routing, request: request, result: result)
-                    } else {
-                        // Enqueue again
-                        self.pendingURLs.append(ref)
-                    }
+                // Route found
+                if let action = routing.action {
+                    let queryParameters = queryParametersWithURL(url)
+                    
+                    let request = PRRRequest(url: url, pathParameters: pathParams, queryParameters: queryParameters)
+                    
+                    self.delegate?.routerWillRoute?(self, routing: routing, request: request)
+                    let result = action.runActionForRoute(routing, request: request)
+                    self.delegate?.routerDidRoute?(self, routing: routing, request: request, result: result)
                 } else {
-                    // No route found
-                    let params = queryParametersWithURL(url)
-                    self.delegate?.routerDidFailToRoute?(self, url: url, parameters: params)
+                    // Enqueue again
+                    self.pendingRequests.append((routing, ref, pathParams))
                 }
             }
         }
