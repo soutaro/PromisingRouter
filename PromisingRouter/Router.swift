@@ -28,7 +28,7 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
      @param queue GCD queue on which actions and delegate methods are invoked.
      @remark This class is not thread safe. Make sure all operations for the object are done from queue given to this initializer.
      */
-    init(queue: dispatch_queue_t) {
+    public init(queue: dispatch_queue_t) {
         self.queue = queue
         
         self.routings = []
@@ -100,9 +100,9 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
                         
                         let request = PRRRequest(url: url, pathParameters: binding, queryParameters: queryParameters)
                         
-                        self.delegate?.routerWillRoute?(self, action: action, request: request)
+                        self.delegate?.routerWillRoute?(self, routing: routing, request: request)
                         let result = action.runActionForRoute(routing, request: request)
-                        self.delegate?.routerDidRoute?(self, action: action, request: request, result: result)
+                        self.delegate?.routerDidRoute?(self, routing: routing, request: request, result: result)
                     } else {
                         // Enqueue again
                         self.pendingURLs.append(ref)

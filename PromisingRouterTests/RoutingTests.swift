@@ -28,9 +28,9 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
     var indexRouting: PRRRouting!
     
     var didFailTrace: [(NSURL, [String: String])]!
-    var didRouteTrace: [(PRRAction, PRRRequest, RoutingResult?)]!
+    var didRouteTrace: [(PRRRouting, PRRRequest, RoutingResult?)]!
     var didTimeoutTrace: [(NSURL, [String: String])]!
-    var willRouteTrace: [(PRRAction, PRRRequest)]!
+    var willRouteTrace: [(PRRRouting, PRRRequest)]!
     
     override func setUp() {
         super.setUp()
@@ -73,8 +73,8 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.postNotification("RouterDidFailToRoute")
     }
     
-    func routerDidRoute(router: PRRRouter, action: PRRAction, request: PRRRequest, result: PRRResult?) {
-        self.didRouteTrace.append((action, request, result as! RoutingResult?))
+    func routerDidRoute(router: PRRRouter, routing: PRRRouting, request: PRRRequest, result: PRRResult?) {
+        self.didRouteTrace.append((routing, request, result as! RoutingResult?))
         self.postNotification("RouterDidRoute")
     }
     
@@ -83,8 +83,8 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.postNotification("RouterDidTimeout")
     }
     
-    func routerWillRoute(router: PRRRouter, action: PRRAction, request: PRRRequest) {
-        self.willRouteTrace.append((action, request))
+    func routerWillRoute(router: PRRRouter, routing: PRRRouting, request: PRRRequest) {
+        self.willRouteTrace.append((routing, request))
         self.postNotification("RouterWillRoute")
     }
     
