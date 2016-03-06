@@ -27,9 +27,9 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
     var showRouting: PRRRouting!
     var indexRouting: PRRRouting!
     
-    var didFailTrace: [NSURL]!
+    var didFailTrace: [(NSURL, [String: String])]!
     var didRouteTrace: [(PRRAction, PRRRequest, RoutingResult?)]!
-    var didTimeoutTrace: [NSURL]!
+    var didTimeoutTrace: [(NSURL, [String: String])]!
     var willRouteTrace: [(PRRAction, PRRRequest)]!
     
     override func setUp() {
@@ -68,8 +68,8 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         }
     }
     
-    func routerDidFailToRoute(router: PRRRouter, url: NSURL) {
-        self.didFailTrace.append(url)
+    func routerDidFailToRoute(router: PRRRouter, url: NSURL, parameters: [String: String]) {
+        self.didFailTrace.append((url, parameters))
         self.postNotification("RouterDidFailToRoute")
     }
     
@@ -78,8 +78,8 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.postNotification("RouterDidRoute")
     }
     
-    func routerDidTimeout(router: PRRRouter, url: NSURL) {
-        self.didTimeoutTrace.append(url)
+    func routerDidTimeout(router: PRRRouter, url: NSURL, parameters: [String: String]) {
+        self.didTimeoutTrace.append((url, parameters))
         self.postNotification("RouterDidTimeout")
     }
     
@@ -130,20 +130,32 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidFailToRoute", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://no/such/route")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://no/such/route?key=value")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
-    }
+
+        let url = self.didFailTrace[0].0
+        let params = self.didFailTrace[0].1
+        
+        XCTAssertEqual(NSURL(string: "app://no/such/route?key=value")!, url)
+        XCTAssertEqual(["key": "value"], params)
+}
     
     func testRoutingTimeout() {
         self.expectationForNotification("RouterDidTimeout", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people/1/show")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://people/1/show?key=value")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
+        
+        let url = self.didTimeoutTrace[0].0
+        let params = self.didTimeoutTrace[0].1
+        
+        XCTAssertEqual(NSURL(string: "app://people/1/show?key=value")!, url)
+        XCTAssertEqual(["key": "value"], params)
     }
     
     func testRoutingResume() {

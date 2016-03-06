@@ -52,7 +52,8 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
                 if let this = wself {
                     if let index = this.pendingURLs.indexOf(ref) {
                         this.pendingURLs.removeAtIndex(index)
-                        this.delegate?.routerDidTimeout?(this, url: ref.url)
+                        let params = queryParametersWithURL(url)
+                        this.delegate?.routerDidTimeout?(this, url: ref.url, parameters: params)
                     }
                 }
             }
@@ -108,7 +109,8 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
                     }
                 } else {
                     // No route found
-                    self.delegate?.routerDidFailToRoute?(self, url: url)
+                    let params = queryParametersWithURL(url)
+                    self.delegate?.routerDidFailToRoute?(self, url: url, parameters: params)
                 }
             }
         }

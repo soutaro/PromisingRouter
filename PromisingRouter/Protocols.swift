@@ -7,8 +7,8 @@ import Foundation
 @objc public protocol PRRRouterDelegate {
     optional func routerWillRoute(router: PRRRouter, action: PRRAction, request: PRRRequest)
     optional func routerDidRoute(router: PRRRouter, action: PRRAction, request: PRRRequest, result: PRRResult?)
-    optional func routerDidTimeout(router: PRRRouter, url: NSURL)
-    optional func routerDidFailToRoute(router: PRRRouter, url: NSURL)
+    optional func routerDidTimeout(router: PRRRouter, url: NSURL, parameters: [String: String])
+    optional func routerDidFailToRoute(router: PRRRouter, url: NSURL, parameters: [String: String])
     optional func routerDidCancel(router: PRRRouter)
 }
 
