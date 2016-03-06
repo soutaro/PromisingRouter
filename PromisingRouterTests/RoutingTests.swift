@@ -99,7 +99,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidRoute", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people/1/show")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://localhost/people/1/show")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
@@ -114,7 +114,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidRoute", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://localhost/people")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
@@ -130,7 +130,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidFailToRoute", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://no/such/route?key=value")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://localhost/no/such/route?key=value")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
@@ -138,7 +138,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         let url = self.didFailTrace[0].0
         let params = self.didFailTrace[0].1
         
-        XCTAssertEqual(NSURL(string: "app://no/such/route?key=value")!, url)
+        XCTAssertEqual(NSURL(string: "app://localhost/no/such/route?key=value")!, url)
         XCTAssertEqual(["key": "value"], params)
 }
     
@@ -146,7 +146,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidTimeout", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people/1/show?key=value")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://localhost/people/1/show?key=value")!, timeout: 0.1)
         }
         
         self.waitForExpectationsWithTimeout(1, handler: nil)
@@ -154,7 +154,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         let url = self.didTimeoutTrace[0].0
         let params = self.didTimeoutTrace[0].1
         
-        XCTAssertEqual(NSURL(string: "app://people/1/show?key=value")!, url)
+        XCTAssertEqual(NSURL(string: "app://localhost/people/1/show?key=value")!, url)
         XCTAssertEqual(["key": "value"], params)
     }
     
@@ -162,7 +162,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidRoute", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people/1/show")!, timeout: 0.5)
+            self.router.dispatch(NSURL(string: "app://localhost/people/1/show")!, timeout: 0.5)
         }
         
         let showAction = RoutingAction(message: "show")
@@ -175,7 +175,7 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.expectationForNotification("RouterDidCancel", object: self, handler: nil)
         
         dispatch_sync(self.queue) {
-            self.router.dispatch(NSURL(string: "app://people/1/show")!, timeout: 0.1)
+            self.router.dispatch(NSURL(string: "app://localhost/people/1/show")!, timeout: 0.1)
             self.router.cancel()
         }
         

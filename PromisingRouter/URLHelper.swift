@@ -28,9 +28,6 @@ func bindParametersFromPath(route: String, url: NSURL) -> [String: String]? {
     if urlComponents.count > 0 {
         urlComponents.removeFirst()
     }
-    if let host = url.host {
-        urlComponents.insert(host, atIndex: 0)
-    }
     
     var binding: [String: String] = [:]
     
