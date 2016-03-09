@@ -8,15 +8,24 @@ class BindingTests: XCTestCase {
     }
     
     func testBindParametersFromPath() {
-        XCTAssertEqual([:], bindParametersFromPath("/welcome", url: NSURL(string: "app://localhost/welcome")!)!)
-        XCTAssertEqual(["id": "123"], bindParametersFromPath("/people/:id", url: NSURL(string: "app://localhost/people/123")!) ?? [:])
-        XCTAssertEqual(["id": "123"], bindParametersFromPath("/people/:id", url: NSURL(string: "app://localhost/people/123/")!) ?? [:])
-        XCTAssertEqual(["id": "123"], bindParametersFromPath("/people/:id/", url: NSURL(string: "app://localhost/people/123/")!) ?? [:])
-        XCTAssertEqual(["id": "123", "action": "show"], bindParametersFromPath("/people/:id/:action", url: NSURL(string: "app://localhost/people/123/show")!) ?? [:])
-        XCTAssertEqual(["id": "123"], bindParametersFromPath("/people/:id/show", url: NSURL(string: "app://localhost/people/123/show")!) ?? [:])
-        XCTAssertEqual(["name": "山田太郎"], bindParametersFromPath("/people/:name", url: NSURL(string: "app://localhost/people/%E5%B1%B1%E7%94%B0%E5%A4%AA%E9%83%8E")!) ?? [:])
+        XCTAssertEqual([:], bindParametersFromPath(NSURL(string: "app://localhost/welcome")!, url: NSURL(string: "app://localhost/welcome")!)!)
+        XCTAssertEqual(["id": "123"], bindParametersFromPath(NSURL(string: "app://localhost/people/:id")!, url: NSURL(string: "app://localhost/people/123")!) ?? [:])
+        XCTAssertEqual(["id": "123"], bindParametersFromPath(NSURL(string: "app://localhost/people/:id")!, url: NSURL(string: "app://localhost/people/123/")!) ?? [:])
+        XCTAssertEqual(["id": "123"], bindParametersFromPath(NSURL(string: "app://localhost/people/:id/")!, url: NSURL(string: "app://localhost/people/123/")!) ?? [:])
+        XCTAssertEqual(["id": "123", "action": "show"], bindParametersFromPath(NSURL(string: "app://localhost/people/:id/:action")!, url: NSURL(string: "app://localhost/people/123/show")!) ?? [:])
+        XCTAssertEqual(["id": "123"], bindParametersFromPath(NSURL(string: "app://localhost/people/:id/show")!, url: NSURL(string: "app://localhost/people/123/show")!) ?? [:])
+        XCTAssertEqual(["name": "山田太郎"], bindParametersFromPath(NSURL(string: "app://localhost/people/:name")!, url: NSURL(string: "app://localhost/people/%E5%B1%B1%E7%94%B0%E5%A4%AA%E9%83%8E")!) ?? [:])
         
-        XCTAssertNil(bindParametersFromPath("/people/:id", url: NSURL(string: "app://localhost/person/123")!))
-        XCTAssertNil(bindParametersFromPath("/people/:id/show", url: NSURL(string: "app://localhost/people/123/delete")!))
+        XCTAssertNil(bindParametersFromPath(NSURL(string: "app://localhost/people/:id")!, url: NSURL(string: "app://localhost/person/123")!))
+        XCTAssertNil(bindParametersFromPath(NSURL(string: "app://localhost/people/:id/show")!, url: NSURL(string: "app://localhost/people/123/delete")!))
+    }
+    
+    func testBindingFromHost() {
+        XCTAssertEqual([:], bindParametersFromPath(NSURL(string: "app://localhost/welcome")!, url: NSURL(string: "app://localhost/welcome")!)!)
+        XCTAssertEqual([:], bindParametersFromPath(NSURL(string: "app:///welcome")!, url: NSURL(string: "app://localhost/welcome")!)!)
+        XCTAssertEqual([:], bindParametersFromPath(NSURL(string: "app://localhost/welcome")!, url: NSURL(string: "app:///welcome")!)!)
+        XCTAssertEqual([:], bindParametersFromPath(NSURL(string: "app:///welcome")!, url: NSURL(string: "app:///welcome")!)!)
+        
+        XCTAssertNil(bindParametersFromPath(NSURL(string: "app://localhost/welcome")!, url: NSURL(string: "app://test.host/welcome")!))
     }
 }

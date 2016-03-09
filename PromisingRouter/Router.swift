@@ -75,7 +75,7 @@ private func ==(lhs: URLRef, rhs: URLRef) -> Bool {
     /**
      Returns new routing with route string.
      */
-    public func routingWithRoute(route: String) -> PRRRouting {
+    public func routingWithRoute(route: NSURL) -> PRRRouting {
         let routing = PRRRouting(router: self, route: route)
         self.routings.append(routing)
         

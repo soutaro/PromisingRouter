@@ -4,7 +4,7 @@ import Foundation
     /**
      Route pattern string for this routing entry.
      */
-    public let route: String
+    public let route: NSURL
     
     var _action: PRRAction?
     
@@ -13,7 +13,7 @@ import Foundation
      */
     public unowned let router: PRRRouter
     
-    init(router: PRRRouter, route: String) {
+    init(router: PRRRouter, route: NSURL) {
         self.router = router
         self.route = route
     }

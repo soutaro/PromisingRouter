@@ -38,8 +38,8 @@ class RoutingTests: XCTestCase, PRRRouterDelegate {
         self.queue = dispatch_queue_create("promisingrouter.test", nil)
         
         self.router = PRRRouter(queue: self.queue)
-        self.showRouting = router.routingWithRoute("/people/:id/show")
-        self.indexRouting = router.routingWithRoute("/people")
+        self.showRouting = router.routingWithRoute(NSURL(string: "app:///people/:id/show")!)
+        self.indexRouting = router.routingWithRoute(NSURL(string: "app:///people")!)
         self.router.delegate = self
         
         self.didFailTrace = []

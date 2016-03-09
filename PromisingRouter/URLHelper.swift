@@ -21,17 +21,23 @@ func queryParametersWithURL(url: NSURL) -> [String: String] {
     return dictionary
 }
 
-func bindParametersFromPath(route: String, url: NSURL) -> [String: String]? {
-    let routeComponents = route.componentsSeparatedByString("/").filter { !$0.isEmpty }
-    
-    var urlComponents = url.pathComponents ?? []
-    if urlComponents.count > 0 {
-        urlComponents.removeFirst()
+func bindParametersFromPath(route: NSURL, url: NSURL) -> [String: String]? {
+    guard route.scheme == url.scheme else {
+        return nil
     }
     
     var binding: [String: String] = [:]
     
-    if let pairs = routeComponents.zip(urlComponents) {
+    if let routeHost = route.host, let urlHost = url.host {
+        if routeHost != urlHost {
+            // does not match
+            return nil
+        }
+    }
+
+    switch (route.pathComponents, url.pathComponents) {
+    case (.Some(let routeComponents), .Some(let urlComponents)) where routeComponents.count == urlComponents.count:
+        let pairs = routeComponents.zip(urlComponents)!
         for (routeComponent, pathComponent) in pairs {
             if routeComponent.hasPrefix(":") {
                 // Bind
@@ -46,7 +52,9 @@ func bindParametersFromPath(route: String, url: NSURL) -> [String: String]? {
         }
         
         return binding
-    } else {
+    case (.None, .None):
+        return binding
+    default:
         return nil
     }
 }
